@@ -1,20 +1,38 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import Home from "../views/Home.vue";
+import Grußkarten from "../views/Grußkarten.vue";
+import Step1 from "../views/card-steps/step1.vue";
+import Step2 from "../views/card-steps/step2.vue";
+import Step3 from "../views/card-steps/step3.vue";
+import Step4 from "../views/card-steps/step4.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    redirect: "/grusskarten/1",
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    path: "/grusskarten",
+    name: "Grußkarten",
+    component: Grußkarten,
+    children: [
+      {
+        path: "1",
+        component: Step1,
+      },
+      {
+        path: "2",
+        component: Step2,
+      },
+      {
+        path: "3",
+        component: Step3,
+      },
+      {
+        path: "4",
+        component: Step4,
+      },
+    ],
   },
 ];
 
