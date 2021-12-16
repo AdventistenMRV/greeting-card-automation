@@ -20,16 +20,16 @@
     <Button
       class="p-mr-2"
       :class="{
-        'p-button-secondary': !greetingCardService.addressData,
+        'p-button-secondary': !greetingCardService.addressData.length,
       }"
-      :disabled="!greetingCardService.addressData"
+      :disabled="!greetingCardService.addressData.length"
       type="submit"
       label="Weiter"
       @click="$router.push('3')"
     />
     <p></p>
   </div>
-  <Accordion v-if="!greetingCardService.addressData">
+  <Accordion v-if="!greetingCardService.addressData.length">
     <AccordionTab header="Anleitung: So kommst du an die Adressdaten aus WAVE">
       <div>
         <p><Badge value="1"></Badge> Öffne WAVE auf deinem Computer.</p>
@@ -77,6 +77,7 @@
 import { GreetingCardService } from "@/classes/GreetingCardService";
 import { defineComponent } from "vue";
 import { greetingCardService } from "../Grußkarten.vue";
+import router from "@/router";
 
 export default defineComponent({
   name: "Step2",
@@ -84,6 +85,11 @@ export default defineComponent({
     return {
       greetingCardService: greetingCardService as GreetingCardService,
     };
+  },
+  mounted: function () {
+    if (!greetingCardService.cardType) {
+      router.push("1");
+    }
   },
   components: {},
 });

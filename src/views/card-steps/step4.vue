@@ -41,6 +41,7 @@
 
 <script lang="ts">
 import { GreetingCardService } from "@/classes/GreetingCardService";
+import router from "@/router";
 import { defineComponent } from "vue";
 import { greetingCardService } from "../Grußkarten.vue";
 
@@ -50,6 +51,11 @@ export default defineComponent({
     return {
       greetingCardService: greetingCardService as GreetingCardService,
     };
+  },
+  mounted: function () {
+    if (!greetingCardService.cardType) {
+      router.push("1");
+    }
   },
   components: {},
   methods: {

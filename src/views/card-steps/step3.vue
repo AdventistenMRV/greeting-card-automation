@@ -8,7 +8,6 @@
     <template #toolbar>
       <span class="ql-formats">
         <button class="ql-bold"></button>
-        <button class="ql-italic"></button>
       </span>
     </template>
   </Editor>
@@ -30,6 +29,7 @@
 
 <script lang="ts">
 import { GreetingCardService } from "@/classes/GreetingCardService";
+import router from "@/router";
 import { defineComponent } from "vue";
 import { greetingCardService } from "../Grußkarten.vue";
 
@@ -40,6 +40,11 @@ export default defineComponent({
       greetingCardService: greetingCardService as GreetingCardService,
       greetingCardText: "init",
     };
+  },
+  mounted: function () {
+    if (!greetingCardService.cardType) {
+      router.push("1");
+    }
   },
   components: {},
 });
