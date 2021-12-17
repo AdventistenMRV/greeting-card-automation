@@ -28,6 +28,7 @@ export default defineComponent({
       hidePasteField: false,
     };
   },
+  emits: ["data-valid"],
   methods: {
     dataChanged: function (data: string) {
       const parser = new AddressData();
