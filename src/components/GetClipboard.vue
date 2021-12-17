@@ -1,8 +1,9 @@
 <template>
   <InputText
-    v-model="value"
+    v-model="inputData"
     v-if="!hidePasteField"
     v-on:input="dataChanged($event.data)"
+    ref="inputData"
   />
 
   <Button
@@ -22,7 +23,7 @@ export default defineComponent({
   name: "get-clipboard",
   data() {
     return {
-      value: "",
+      inputData: "",
       placeholderText:
         'Hier die kopierten Excel Daten einfügen (Rechtsklick > "Einfügen" auswählen)',
       hidePasteField: false,
@@ -34,10 +35,14 @@ export default defineComponent({
       const parser = new AddressData();
       if (parser.parseData(data)) {
         this.onDataValid(parser.parsedAddressData);
+      } else {
+        console.log(this.inputData);
+        this.inputData = "";
+        console.log(this.inputData);
       }
     },
     resetData: function () {
-      this.value = "";
+      this.inputData = "";
       this.$emit("data-valid", false);
       this.hidePasteField = false;
     },
