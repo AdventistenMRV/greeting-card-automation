@@ -12,6 +12,7 @@ export class AddressData {
   parseData(rawData: string): IAddressData[] | false {
     if (rawData) {
       // parse string to arrays
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const array = [] as any;
       rawData.split("\n").forEach((row) => {
         array.push(row.split("\t"));

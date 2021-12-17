@@ -54,6 +54,13 @@
           Markierte Datensätze kopieren)
         </p>
       </div>
+      <Button
+        class="p-mr-2 clipboard-btn"
+        type="submit"
+        :data-clipboard-text="greetingCardService.exampleRawData"
+        icon="pi pi-copy"
+        label="Kopiere Beispieldaten in die Zwischenablage"
+      />
     </AccordionTab>
   </Accordion>
 
@@ -78,6 +85,7 @@ import { GreetingCardService } from "@/classes/GreetingCardService";
 import { defineComponent } from "vue";
 import { greetingCardService } from "../Grußkarten.vue";
 import router from "@/router";
+import ClipboardJS from "clipboard";
 
 export default defineComponent({
   name: "Step2",
@@ -90,6 +98,7 @@ export default defineComponent({
     if (!greetingCardService.cardType) {
       router.push("1");
     }
+    new ClipboardJS(".clipboard-btn");
   },
   components: {},
 });

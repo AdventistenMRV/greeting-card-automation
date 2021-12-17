@@ -61,10 +61,7 @@ export default defineComponent({
   methods: {
     generatePDF: async function () {
       await greetingCardService
-        .createPdf(
-          this.greetingCardService.addressData,
-          this.greetingCardService.currentGreetingCardText
-        )
+        .createPdf(this.greetingCardService.addressData)
         .then((status) => {
           console.log(status);
           this.$toast.add({

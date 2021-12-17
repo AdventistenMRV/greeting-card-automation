@@ -6,10 +6,14 @@ export class GreetingCardService {
   addressData: IAddressData[];
   private cardTexts: Map<string, string>;
   currentGreetingCardText: string;
+  exampleRawData: string;
 
   constructor() {
     this.cardType = undefined;
     this.addressData = [];
+    this.exampleRawData = `Mitglieds-ID	Name	Geburtsdatum	Anrede	Vorname	Geschlecht	Alter	PLZ (Navi)	Ort (Navi)	Land (Navi)	Zusatz	Straße	Geburtsdatum (TAG)	Geburtsdatum (MONAT)	Geburtsdatum (JAHR)	Land	Exakte Bezeichnung	Titel
+    MI-16-06-035598	Mustermann	22.05.1992	Herr	Max	männlich	29	64297	Darmstadt	Deutschland		Carl-Ulrich Str. 36	22	Mai	1992	DE	Deutschland	
+    MI-16-06-030726	Musterfrau	01.12.1943	Frau	Maximiliane	weiblich	78	63073	Offenbach	Deutschland		Musterstraße 33	1	Dezember	1943	DE	Deutschland	`;
     this.cardTexts = new Map<string, string>([
       [
         "Geburtstagskarte",
@@ -62,7 +66,7 @@ export class GreetingCardService {
     }, 0);
   }
 
-  async createPdf(addressData: IAddressData[], text: string): Promise<void> {
+  async createPdf(addressData: IAddressData[]): Promise<void> {
     const pdfDoc = await PDFDocument.create();
     const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
 
@@ -73,7 +77,7 @@ export class GreetingCardService {
         210 * millimeterToPointConversion,
         200 * millimeterToPointConversion,
       ]);
-      const { width, height } = page.getSize();
+      // const { width, height } = page.getSize();
       const fontSize = 13;
       // page.drawText(address.vorname + " " + address.name, {
       //   x: 36,
