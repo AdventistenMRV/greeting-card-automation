@@ -17,11 +17,11 @@ export class GreetingCardService {
     this.cardTexts = new Map<string, string>([
       [
         "Geburtstagskarte",
-        "#Anrede# #Bruder-Schwester# #Nachname#,<br><br>zu Deinem Geburtstag wünschen wir Dir von Herzen alles Gute,<br>Gesundheit und Gottes reichen Segen.<br><br>Möge das neue Lebensjahr Dir viele Schöne Erlebnisse<br>und Augenblicke bereithalten.<br><br><br>Herzliche Grüße<br><strong>Dein Büro der Mittelrheinische Vereinigung</strong>",
+        "#Anrede# #Bruder-Schwester# #Nachname#,<br><br>zu Deinem Geburtstag wünschen wir Dir von Herzen alles Gute,<br>Gesundheit und Gottes reichen Segen.<br><br>Möge das neue Lebensjahr Dir viele Schöne Erlebnisse<br>und Augenblicke bereithalten.<br><br>Herzliche Grüße<br><strong>Dein Büro der Mittelrheinische Vereinigung</strong>",
       ],
       [
         "Taufjubiläumskarte",
-        "#Anrede# #Bruder-Schwester# #Nachname#,<br><br>zu Deinem Taufjubiläum wünschen wir Dir von Herzen alles Gute,<br>Gesundheit und Gottes reichen Segen.<br><br>Möge das neue Lebensjahr Dir viele Schöne Erlebnisse<br>und Augenblicke bereithalten.<br><br><br>Herzliche Grüße<br><strong>Dein Büro der Mittelrheinische Vereinigung</strong>",
+        "#Anrede# #Bruder-Schwester# #Nachname#,<br><br>zu Deinem Taufjubiläum wünschen wir Dir von Herzen alles Gute,<br>Gesundheit und Gottes reichen Segen.<br><br>Möge das neue Lebensjahr Dir viele Schöne Erlebnisse<br>und Augenblicke bereithalten.<br><br>Herzliche Grüße<br><strong>Dein Büro der Mittelrheinische Vereinigung</strong>",
       ],
     ]);
     this.currentGreetingCardText = "";
@@ -78,7 +78,7 @@ export class GreetingCardService {
         200 * millimeterToPointConversion,
       ]);
       // const { width, height } = page.getSize();
-      const fontSize = 13;
+      const fontSize = 12;
       // page.drawText(address.vorname + " " + address.name, {
       //   x: 36,
       //   y: 0 * fontSize,
@@ -88,7 +88,10 @@ export class GreetingCardService {
       //   color: rgb(0, 0.53, 0.71),
       // });
       let text = this.cardTexts.get("Taufjubiläumskarte") as string;
-      text = text.replaceAll("<br>", "\n");
+
+      text = text.replaceAll("<br>", " \n");
+      text = text.replaceAll("<strong>", "");
+      text = text.replaceAll("</strong>", "");
       text = text.replaceAll("#Nachname#", address.name);
       text = text.replaceAll(
         "#Bruder-Schwester#",
@@ -99,11 +102,12 @@ export class GreetingCardService {
         address.geschlecht == "männlich" ? "Lieber" : "Liebe"
       );
       page.drawText(text, {
-        x: 36,
-        y: 245,
+        x: 9 * millimeterToPointConversion,
+        y: 87 * millimeterToPointConversion,
         size: fontSize,
-        maxWidth: 439,
+        maxWidth: 160 * millimeterToPointConversion,
         font: font,
+        lineHeight: 16,
         color: rgb(0.29, 0.29, 0.28),
       });
     });
