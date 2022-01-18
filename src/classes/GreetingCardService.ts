@@ -103,7 +103,7 @@ export class GreetingCardService {
       );
       page.drawText(text, {
         x: 9 * millimeterToPointConversion,
-        y: 87 * millimeterToPointConversion,
+        y: 89 * millimeterToPointConversion,
         size: fontSize,
         maxWidth: 160 * millimeterToPointConversion,
         font: font,
