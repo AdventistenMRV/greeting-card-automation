@@ -23,11 +23,15 @@
       header="Anleitung: Druckereinstellungen damit die Karten gedruckt werden können"
     >
       <div>
-        <p><Badge value="1"></Badge> Öffne die heruntergeladene PDF</p>
-        <p><Badge value="2"></Badge> Wähle <i>Datei > Drucken</i> (Strg-P)</p>
-        <p></p>
-        <Badge value="3"></Badge> Klicke auf Druckereinstellungen und<br />
-        nimm folgende Einstellungen vor:
+        <p>
+          <!-- <Badge value="1"></Badge>  -->
+          <strong>MRV:</strong> Du findest eine Druck-Anleitung im
+          <a
+            href="http://wiki.mrv-net.local/de/B%C3%BCro/Gru%C3%9Fkarten"
+            target="_blank"
+            >Wiki</a
+          >.
+        </p>
         <!-- <ul>
           <li>Selektion: MRV-Geburtstage ab 75</li>
           <li>Filter: MRV-Geburtstage ab 75</li>
