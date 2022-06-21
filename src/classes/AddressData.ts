@@ -38,6 +38,7 @@ export class AddressData {
         "Land",
         "Exakte Bezeichnung",
         "Titel",
+        "Jahre (Taufe)",
       ];
 
       // validate table header
@@ -67,6 +68,7 @@ export class AddressData {
           land: array[index][15],
           exakteBezeichnung: array[index][16],
           titel: array[index][17],
+          jahreTaufe: array[index][18],
         };
         this.parsedAddressData.push(address);
       }

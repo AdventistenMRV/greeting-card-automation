@@ -17,4 +17,5 @@ export interface IAddressData {
   land: string;
   exakteBezeichnung: string;
   titel: string;
+  jahreTaufe: string;
 }
