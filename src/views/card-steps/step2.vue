@@ -39,11 +39,11 @@
         </p>
         <p></p>
         <Badge value="3"></Badge> Wähle folgende Einstellung
-        <ul>
-          <li>Selektion: MRV-Geburtstage ab 75</li>
-          <li>Filter: MRV-Geburtstage ab 75</li>
-          <li>Liste: MRV-Geburtstage ab 75</li>
-          <li>Ausgabe: Standardausgabe</li>
+        <ul v-if="greetingCardService.cardType == 'Geburtstagskarte'">
+          <li>Selektion: MRV-Geburtstagskartengenerator</li>
+        </ul>
+        <ul v-if="greetingCardService.cardType == 'Taufjubiläumskarte'">
+          <li>Selektion: MRV-Taufjubiläumskartengenerator</li>
         </ul>
         <p>
           <Badge value="4"></Badge> Markiere die ganze Ausgabe (Eine Zeile
