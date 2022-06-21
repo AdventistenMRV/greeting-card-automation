@@ -87,7 +87,13 @@ export class GreetingCardService {
       //   font: font,
       //   color: rgb(0, 0.53, 0.71),
       // });
-      let text = this.cardTexts.get("Taufjubiläumskarte") as string;
+
+      // check if a card type is defined
+      if (!this.cardType) {
+        return false;
+      }
+
+      let text = this.cardTexts.get(this.cardType) as string;
 
       text = text.replaceAll("<br>", " \n");
       text = text.replaceAll("<strong>", "");
