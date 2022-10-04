@@ -99,7 +99,7 @@ export class GreetingCardService {
       text = text.replaceAll("<strong>", "");
       text = text.replaceAll("</strong>", "");
       text = text.replaceAll("#Nachname#", address.name);
-      text = text.replaceAll("#Jahre#", address.jahreTaufe);
+      text = text.replaceAll("#Jahre#", address.jahreTaufe++);
       text = text.replaceAll(
         "#Bruder-Schwester#",
         address.geschlecht == "männlich" ? "Bruder" : "Schwester"
