@@ -49,28 +49,31 @@ export class AddressData {
 
       // parse data to IAddressData
       for (let index = 1; index < array.length; index++) {
-        const address: IAddressData = {
-          mitgliedsId: array[index][0],
-          name: array[index][1],
-          geburtsdatum: array[index][2],
-          anrede: array[index][3],
-          vorname: array[index][4],
-          geschlecht: array[index][5],
-          alter: array[index][6],
-          plzNavi: array[index][7],
-          ortNavi: array[index][8],
-          landNavi: array[index][9],
-          zusatz: array[index][10],
-          straße: array[index][11],
-          geburtsdatumTag: array[index][12],
-          geburtsdatumMonat: array[index][13],
-          geburtsdatumJahr: array[index][14],
-          land: array[index][15],
-          exakteBezeichnung: array[index][16],
-          titel: array[index][17],
-          jahreTaufe: array[index][18],
-        };
-        this.parsedAddressData.push(address);
+        // check if line has data
+        if (array[index][0]) {
+          const address: IAddressData = {
+            mitgliedsId: array[index][0],
+            name: array[index][1],
+            geburtsdatum: array[index][2],
+            anrede: array[index][3],
+            vorname: array[index][4],
+            geschlecht: array[index][5],
+            alter: array[index][6],
+            plzNavi: array[index][7],
+            ortNavi: array[index][8],
+            landNavi: array[index][9],
+            zusatz: array[index][10],
+            straße: array[index][11],
+            geburtsdatumTag: array[index][12],
+            geburtsdatumMonat: array[index][13],
+            geburtsdatumJahr: array[index][14],
+            land: array[index][15],
+            exakteBezeichnung: array[index][16],
+            titel: array[index][17],
+            jahreTaufe: array[index][18],
+          };
+          this.parsedAddressData.push(address);
+        }
       }
       console.log("Data valid");
       console.log(this.parsedAddressData);
